@@ -1,0 +1,14 @@
+input poly p : true
+
+nat d = deg(p)
+nat i = 0
+poly result = 0
+
+while i < d:
+    rat c = i * coeff(p, i + 1)
+    poly result = set_coeff(result, i, c)
+    nat i = i + 1
+invariant (i <= d) && (deg(result) <= i) && (forall nat k : (k < i -> coeff(result, k) = (k + 1) * coeff(p, k + 1))) && (forall nat k : (k >= i -> coeff(result, k) = 0))
+variant d - i
+
+output poly result : forall nat k : (coeff(result, k) = (k + 1) * coeff(p, k + 1))
