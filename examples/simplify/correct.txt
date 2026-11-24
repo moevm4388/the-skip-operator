@@ -1,0 +1,12 @@
+input rat r : denom(r) > 0
+
+int n = num(r)
+nat d = denom(r)
+nat g = gcd(abs(n), d)
+
+int new_n = div(n, g)
+nat new_d = div(d, g)
+
+rat result = frac(new_n, new_d)
+
+output rat result : num(result) * denom(r) = num(r) * denom(result) && gcd(abs(num(result)), denom(result)) = 1 && denom(result) > 0
