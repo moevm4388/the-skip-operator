@@ -1,0 +1,15 @@
+input nat a, nat b : a > 0 || b > 0
+
+nat x = a
+nat y = b
+
+while y > 0:
+    nat r = mod(x, y)
+    nat x = y
+    nat y = r
+invariant (x > 0 || y > 0) && gcd(a, b) = gcd(x, y)
+variant y
+
+nat result = x
+
+output nat result : gcd(a, b) = result && result > 0
